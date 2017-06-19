@@ -1,5 +1,5 @@
 class Store
-  require_relative 'phone'
+  require_relative 'Phone'
   attr_accessor :name, :street, :website, :phones
 
   def initialize(name, street, website, phones)
@@ -7,7 +7,6 @@ class Store
     @street = street
     @website = website
     @phones = phones
-
   end
 
   def to_s
@@ -19,7 +18,6 @@ class Store
     store.phones.each do |phone|
         if phone.in_stock == true
           @@phones_in_stock += 1
-      end
     end
   end
 
@@ -61,7 +59,7 @@ class Store
     puts 'Street: #@street'
     puts 'Website: #@website'
     puts 'Total phones: #@@phones.length'
-    puts 'Total phones in stock: #@@phones_in_stock.phonesInStock()'
+    puts 'Total phones in stock: #@@phones_in_stock'
     puts '-------------------------------------'
   end
 
@@ -76,11 +74,7 @@ class Store
          '      ' + 'os: #@specs[:os]'
     puts '-----------------------------------------'
   end
-
 end
-
-
-
 
 p1 = Phone.new("Samsung", 400, true, {memory: "8gb", camera: "13mpx", bluetooth: true, os: "android"})
 p2 = Phone.new("Samsung", 700, true, {memory: "16gb", camera: "12mpx", bluetooth: true, os: "android"})
