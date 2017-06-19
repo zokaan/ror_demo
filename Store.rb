@@ -1,7 +1,7 @@
 class Store
-  require_relative 'Phone'
+  require_relative 'phone'
   attr_accessor :name, :street, :website, :phones
-  
+
   def initialize(name, street, website, phones)
     @name = name
     @street = street
@@ -14,50 +14,49 @@ class Store
     "#{name}, #{street}, #{website}, #{phones}"
   end
 
-  def phonesInStock()
+  def phonesInStock
     @@phones_in_stock = 0
     store.phones.each do |phone|
-      phone.in_stock do |in_stock|
-        if in_stock == true
+        if phone.in_stock == true
           @@phones_in_stock += 1
       end
     end
   end
 
-  def isExpensive()
+  def isExpensive
     store.phones.each do |phone|
-      phone.price.each do |price|
-       if price >= 700
-        phone.display_phone()
-      end
+      phone.display_phone if phone.price >= 700
     end
   end
 
-  def isCheap()
+  def isCheap
     store.phones.each do |phone|
-      phone.price.each do |price|
-        if price < 700
-          phone.display_phone()
-      end
+      phone.display_phone if phone.price < 700
     end
   end
 
-  def isAndroid()
+  def isAndroid
     store.phones.each do |phone|
       phone.specs[:os] do |key|
-        if specs[:os] == 'android'
-          phone.display_phone()
+         phone.display_phone if specs[:os] == 'android'
       end
     end
   end
 
-  def withBluetooth()
+  def withBluetooth
+    store.phones.each do |phone|
+      phone.specs[:bluetooth] do |key|
+        phone.display_phone if specs[:bluetooth] == true
+      end
+    end
   end
 
-  def inStock()
+  def inStock
+    store.phones.each do |phone|
+      phone.display_phone if phone.in_stock == true
   end
 
-  def display_store()
+  def display_store
     puts 'Name: #@name'
     puts 'Street: #@street'
     puts 'Website: #@website'
@@ -66,7 +65,7 @@ class Store
     puts '-------------------------------------'
   end
 
-  def display_phone()
+  def display_phone
     puts 'Model : #@model'
     puts 'Price: #@price'
     puts 'Specs:',
