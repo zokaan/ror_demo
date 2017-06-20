@@ -1,0 +1,39 @@
+<h2>Create new product</h2>
+
+<%= form_for(@product) do |form| %>
+
+  <% unless @product.errors.empty? %>
+    <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  <br/>
+
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br/><br/>
+  <%= form.label :price %>
+  <%= form.text_field :price, class: 'form-control' %>
+  <br/><br/>
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+  <br/><br/>
+  <%= form.label :category %>
+  <%= form.select :category_id, options_for_select([['Phones', 1], ['Electronics', 2]]) %>
+  <br/><br/>
+  <%= form.label :stock %>
+  <%= form.check_box :stock %>
+  <br/><br/>
+
+
+
+  <%= form.submit 'Save' %>
+<% end %>
+
+
+<!-- <label for="product[name]"></label>
+<input type="text" name="product[name]" /> -->
+
+<!-- <form action="/products/new" method="POST"> -->

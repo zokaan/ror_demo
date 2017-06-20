@@ -1,0 +1,12 @@
+<h1>Product details for product: <%= @product.name %></h1>
+<br/>
+<h2>id: <%= @product.id %></h2>
+<h2>name: <%= @product.name %></h2>
+<h2>price: <%= @product.price %></h2>
+<br>
+
+<div id="reviews">
+  <%= render 'reviews/reviews', reviews: @product.reviews %>
+</div>
+
+<%= render 'review_form', product_id: @product.id %>

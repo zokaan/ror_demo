@@ -1,0 +1,29 @@
+<h2>Edit product</h2>
+
+<%= form_for(@product) do |form| %>
+
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br/><br/>
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+  <br/><br/>
+  <%= form.label :description %>
+  <%= form.text_area :description %>
+  <br/><br/>
+  <%= form.label :category %>
+  <%= form.collection_select(:category_id, Category.all, :id, :name) %>
+  <br/><br/>
+  <%= form.label :stock %>
+  <%= form.check_box :stock %>
+  <br/><br/>
+
+  <%= form.submit 'Save' %>
+<% end %>
+
+
+
+<!-- <label for="product[name]">
+<input type="text" name="product[name]" value="product 1" /> -->
+
+<!-- <form action="/products/new" method="POST"> -->

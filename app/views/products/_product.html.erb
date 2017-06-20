@@ -1,0 +1,11 @@
+<tr>
+  <td>id: <%= product.id %></td>
+  <td>name: <%= product.name %></td>
+  <td>price: <%= product.price %></td>
+  <td><%= link_to 'Details', product_path(product) %> |
+  <%= link_to 'Edit', edit_product_path(product) %> |
+  <% if logged_in_user.admin? %>
+    <%= link_to 'Delete', product_path(product), method: :delete %>
+  <% end %>
+  </td>
+</tr>

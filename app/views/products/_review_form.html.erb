@@ -1,0 +1,16 @@
+<div class="row" style="margin-bottom: 100px;">
+  <div class="col-md-8">
+    <%= form_tag(reviews_path, remote: true) do %>
+
+      <div class="form-group">
+        <%= label_tag 'Content' %>
+        <%= text_area_tag :content, nil, class: 'form-control' %>
+      </div>
+
+      <%= hidden_field_tag :product_id, product_id %>
+
+      <%= submit_tag 'Save review', class: 'btn btn-success' %>
+
+    <% end %>
+  </div>
+</div>

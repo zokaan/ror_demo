@@ -1,0 +1,14 @@
+<h1>Welcome to home page</h1>
+<br/>
+
+<%= link_to 'Products', products_path %> |
+<%= link_to 'Create product', new_product_path %>
+<%= link_to 'Go to shop', new_order_path %>
+
+<% unless flash[:notice].nil? %>
+  <h2><%= flash[:notice] %></h2>
+<% end %>
+
+<% unless session[:user].nil? %>
+  <%= link_to "Logout", logout_path %>
+<% end %>

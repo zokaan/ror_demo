@@ -1,0 +1,8 @@
+<% if @review.persisted? %>
+  $("#reviews").html("<%= escape_javascript(render 'reviews/reviews', reviews: @reviews) %>");
+
+  //alert("Hello it's me :)");
+<% else %>
+  alert("Nooooooo :'(");
+<% end %>
+

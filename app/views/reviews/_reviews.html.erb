@@ -1,0 +1,7 @@
+<% reviews.each do |review| %>
+  <div>
+    <p><b><%= review.user.username %></b></p>
+    <p><%= review.content %></p>
+  </div>
+  <hr>
+<% end %>

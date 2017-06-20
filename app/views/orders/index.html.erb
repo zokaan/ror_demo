@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <h1>Orders</h1>
+    <br/>
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Created at</th>
+          <th>Product name</th>
+          <th>Buyer name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td><%= order.id %></td>
+            <td><%= I18n.localize(order.created_at, format: "%d/%m/%Y") %></td>
+            <td><%= link_to order.product.name, orders_path(product_id: order.product.id) %></td>
+            <td><%= link_to order.user.username, orders_path(user_id: order.user.id) %></td>
+            <td>
+            <% if order_belongs_to_logged_in_user?(logged_in_user, order.user) %>
+              <%= link_to 'Delete', order_path(order.id), method: :delete %>
+            <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
